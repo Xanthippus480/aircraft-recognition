@@ -1,0 +1,280 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --wake-light: #FF9900;
+    --wake-medium: #FF00FF;
+    --wake-heavy: #34A853;
+    --wake-super: #e90000;
+}
+
+body {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1em;
+}
+
+.card-container {
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: column nowrap;
+    width: 40rem;
+    margin: auto;
+}
+
+@media screen and (max-width: 767px) {
+    .card-container {
+        width: 100%;
+    }
+}
+
+.cardholder {
+    position: relative;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    height: 30rem;
+    text-align: center;
+}
+
+.card {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 4px #8e8e8e;
+    text-align: center;
+    overflow: hidden;
+    backface-visibility: hidden;
+}
+
+.card:hover {
+    cursor: pointer;
+}
+
+.flipped {
+    transform: rotateY(180deg);
+}
+
+.card.animate-out {
+    animation: flip-out 0.25s ease-in;
+    z-index: 1;
+}
+
+.card.animate-in {
+    animation: flip-in 0.25s ease-in;
+    z-index: 101;
+}
+
+.front {
+    z-index: 101;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.back {
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-wrap: nowrap;
+    border-width: 1.5rem;
+    border-style: solid;
+}
+
+@keyframes flip-out {
+    from {
+        transform: rotateY(0deg);
+    }
+
+    to {
+        transform: rotateY(180deg);
+    }
+}
+
+@keyframes flip-in {
+    from {
+        transform: rotateY(180deg);
+    }
+
+    to {
+        transform: rotateY(0deg);
+    }
+}
+
+.border-wake-light {
+    border-color: var(--wake-light);
+}
+
+.border-wake-medium {
+    border-color: var(--wake-medium);
+}
+
+.border-wake-heavy {
+    border-color: var(--wake-heavy);
+}
+
+.border-wake-super {
+    border-color: var(--wake-super);
+}
+
+.btn {
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    padding: 0.5rem 1rem;
+}
+
+.btn:active {
+    filter: brightness(0.8);
+}
+
+.btn-primary {
+    border: 1px solid #0077ae;
+    background-color: #0077ae;
+    color: #fff;
+    font-weight: bold;
+    transition: background-color 0.2s ease-in, color 0.2s ease-in;
+}
+
+.btn-primary:hover {
+    background-color: #fff;
+    color: #0077ae;
+}
+
+.button-bar {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.button-bar button {
+    min-width: 10%;
+    font-size: 1.5rem;
+}
+
+.filter-box {
+    margin-bottom: 2rem;
+}
+
+form {
+    margin-bottom: 2rem;
+}
+
+#filter-form .radio-container {
+    display: inline-block;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+#filter-form input[type="submit"] {
+    display: block;
+}
+
+#reset-button {
+    display: inline-block;
+}
+
+.error-message {
+    display: none;
+    color: red;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.flex-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.flex-wrapper>* {
+    margin-right: 1.5rem;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding: 0.5rem 1rem;
+}
+
+.d-block {
+    display: block;
+}
+
+.sidebar {
+    display: none;
+    position: absolute;
+    top: 0;
+    padding-top: 0.5rem;
+    width: 12rem;
+    height: 100%;
+    background-color: aquamarine;
+    z-index: 999;
+}
+
+.sidebar-right {
+    float: right;
+    right: 0;
+}
+
+.toolbar {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+
+.sidebar-right .toolbar {
+    justify-content: flex-end;
+}
+
+.toolbar button {
+    width: 2rem;
+    height: 2rem;
+    margin: 0.25rem;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.legend ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.legend li {
+    margin-bottom: 0.5em;
+}
+
+.legend li::before {
+    display: inline-block;
+    content: "";
+    border-radius: 3px;
+    width: 1em;
+    height: 1em;
+    margin-right: .5em;
+}
+
+.key-wake-light::before {
+    background-color: var(--wake-light);
+}
+
+.key-wake-medium::before {
+    background-color: var(--wake-medium);
+}
+
+.key-wake-heavy::before {
+    background-color: var(--wake-heavy);
+}
+
+.key-wake-super::before {
+    background-color: var(--wake-super);
+}
