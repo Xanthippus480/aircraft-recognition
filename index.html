@@ -6,21 +6,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aircraft Identification</title>
 
-    <link rel="stylesheet" href="./flashcards.css">
+    <link rel="stylesheet" href="./Resources/CSS/flashcards.css">
     <link rel="stylesheet" href="./Resources/font-awesome-4.7.0/css/font-awesome.css">
-    <script src="./Resources/jquery-3.7.0.min.js"></script>
-    <script src="./Resources/aircraftData.js" type="module" defer></script>
+    <script src="./Resources/JS/jquery-3.7.0.min.js"></script>
+    <script src="./Resources/JS/aircraftData.js" type="module" defer></script>
     <!--script src="./flipJQ.js" type="module" defer></script-->
-    <script src="./fCards.js" type="module" defer></script>
+    <script src="./Resources/JS/fCards.js" type="module" defer></script>
 </head>
 
 <body>
     <div class="card-container">
         <div class="cardholder">
-            <div id="aircraft-pic" class="card front" data-side='1'>
+            <div id="front" id="aircraft-pic" class="card front" data-side='1'>
             </div>
-            <div class="card back flipped" data-side='2'>
+            <div id="back" class="card back flipped" data-side='2'>
                 <h1 id="aircraft-name"></h1>
+                <table class="specs-table">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span></span>
+                                <p id="icao-code"></p>
+                            </td>
+                            <td>
+                                <span></span>
+                                <p id="approach-cat"></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span></span>
+                                <p id="cruise-level"></p>
+                            </td>
+                            <td>
+                                <span></span>
+                                <p id="cruise-speed"></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span></span>
+                                <p id="climb-rate"></p>
+                            </td>
+                            <td>
+                                <span></span>
+                                <p id="descent-rate"></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
         <div class="button-bar">
