@@ -1,5 +1,6 @@
 import aircraftData from "./aircraftData.js"
 import Utilities from "./utilities.js";
+let originalData = aircraftData;
 let ind = 0;
 let filtered = false;
 let shuffled = false;
@@ -15,6 +16,7 @@ window.onload = function () {
     const shuffleButton = document.getElementById('shuffle-button');
 
     getAircraft();
+    setCardWidth();
 
     nextButton.addEventListener('click', function () {
         ind++;
@@ -36,9 +38,8 @@ window.onload = function () {
     resetButton.addEventListener('click', function () {
         filtered = false;
         shuffled = false;
-        Utilities.sortObjectBy(aircraftData, "aircraft name")
-        console.log(aircraftData);
-        getAircraft();
+        ind = 0;
+        getAircraft(aircraftData);
     });
 
     shuffleButton.addEventListener('click', function () {
@@ -50,7 +51,7 @@ window.onload = function () {
 }
 
 function getShuffled() {
-    let original = aircraftData
+    let original = originalData;
     shuffledData = filtered === true ? Utilities.shuffle(filteredData) : Utilities.shuffle(original);
 }
 
@@ -76,7 +77,7 @@ function clearFilterError() {
 }
 
 function getAircraft() {
-    const data = shuffled === true ? shuffledData : filtered === true ? filteredData : aircraftData;
+    const data = shuffled === true ? shuffledData : filtered === true ? filteredData : typeof sourceData === "object" ? sourceData : originalData;
 
     if (data.length == 0) return filterError();
 
@@ -86,20 +87,28 @@ function getAircraft() {
         ind = data.length - 1;
     }
 
-    const item = data[ind];
-    const aircraftName = item['aircraft name'];
-    const wake = item['wake cat'];
-    const picFile = aircraftName + '.jpg';
-    const picUrl = "../../Images/Aircraft-Pics/" + picFile;
-    console.log(picUrl)
+    const aircraft = data[ind];
+    const url = "./Images/Aircraft-Pics/" + aircraft["aircraft name"] + '.jpg';
 
-    setAircraft(aircraftName, picUrl);
-    setBorder(wake);
+    setAircraft(aircraft, url);
+    setBorder(aircraft["wake cat"]);
 }
-
 
 // ------- JQUERY BELOW -------
 
+function setAircraft(aircraft, url) {
+    $("#aircraft-img-1").attr('src', url);
+    $("#aircraft-name").text(aircraft["aircraft name"]);
+    $('.specs-table td p').each(function () {
+        const cellID = $(this).attr('id');
+        console.log(cellID);
+        if (cellID === "cruise speed") {
+            $(this).text(`${aircraft["cruise speed (kts)"]} / ${aircraft["cruise speed (mach)"]}`);
+        } else {
+            $(this).text(aircraft[cellID]);
+        }
+    });
+}
 
 $(".front").on("click", function () {
     const cList = $(this).attr("class");
@@ -142,23 +151,28 @@ function getFilters() {
     return filterObj
 }
 
-function setAircraft(name, url) {
-    $("#aircraft-pic").css({ backgroundImage: `url("${url}")` });
-    $("#aircraft-name").text(name);
-}
-
 function setBorder(cat) {
     $(".back").removeClass(["light", "medium", "heavy", "super"])
     switch (cat) {
-        case "L": $(".back").addClass("border-wake-light");
+        case "L": $(".back").addClass("shadow-wake-light");
             break;
-        case "M": $(".back").addClass("border-wake-medium");
+        case "M": $(".back").addClass("shadow-wake-medium");
             break;
-        case "H": $(".back").addClass("border-wake-heavy");
+        case "H": $(".back").addClass("shadow-wake-heavy");
             break;
-        case "J": $(".back").addClass("border-wake-super");
+        case "J": $(".back").addClass("shadow-wake-super");
             break;
     }
 }
 
+function setCardWidth() {
+    const winWidth = $(window).width();
+    const winHeight = $(window).height();
+    const wScale = winWidth < 768 ? 0.9 : winWidth < 1025 ? 0.8 : 0.6;
 
+    if ($("#main-cont").length === 1) $("#main-cont").width(winWidth * wScale);
+    if ($("#multi-cont").length === 1) {
+        $("#multi-cont").width(winWidth * 0.95);
+        $("#multi-cont .card").height(winHeight * 0.4);
+    }
+}
