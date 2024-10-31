@@ -1,1 +1,0 @@
-$('#back .specs-table span').text("Test text");

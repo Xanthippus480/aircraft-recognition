@@ -87,24 +87,28 @@ function getAircraft() {
         ind = data.length - 1;
     }
 
-    const item = data[ind];
+    const aircraft = data[ind];
+    const url = "./Images/Aircraft-Pics/" + aircraft["aircraft name"] + '.jpg';
 
-    const aircraftInfo = (info) => {
-        const obj = { aircraftName: info['aircraft name'], wakeCat: info['wake cat'] }
-        obj.picUrl = "./Images/Aircraft-Pics/" + obj.aircraftName + '.jpg';
-
-        return obj
-    }
-
-    const details = aircraftInfo(item);
-
-    setAircraft(details.aircraftName, details.picUrl);
-    setBorder(details.wakeCat);
+    setAircraft(aircraft, url);
+    setBorder(aircraft["wake cat"]);
 }
-
 
 // ------- JQUERY BELOW -------
 
+function setAircraft(aircraft, url) {
+    $("#aircraft-img-1").attr('src', url);
+    $("#aircraft-name").text(aircraft["aircraft name"]);
+    $('.specs-table td p').each(function () {
+        const cellID = $(this).attr('id');
+        console.log(cellID);
+        if (cellID === "cruise speed") {
+            $(this).text(`${aircraft["cruise speed (kts)"]} / ${aircraft["cruise speed (mach)"]}`);
+        } else {
+            $(this).text(aircraft[cellID]);
+        }
+    });
+}
 
 $(".front").on("click", function () {
     const cList = $(this).attr("class");
@@ -145,11 +149,6 @@ function getFilters() {
     }
 
     return filterObj
-}
-
-function setAircraft(name, url) {
-    $("#aircraft-img-1").attr('src', url);
-    $("#aircraft-name").text(name);
 }
 
 function setBorder(cat) {
