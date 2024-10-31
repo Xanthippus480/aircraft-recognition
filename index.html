@@ -15,9 +15,16 @@
 </head>
 
 <body>
-    <div class="card-container">
-        <div class="cardholder">
+    <nav class="navbar">
+        <ul class="navbar-menu">
+            <li class="menu-item"><a href="#">Home</a></li>
+            <li class="menu-item"><a href="./multi.html">Multi</a></li>
+        </ul>
+    </nav>
+    <div id="main-cont" class="card-container">
+        <div id="main-card" class="cardholder">
             <div id="front" class="card front" data-side='1'>
+                <img class="" src="" id="aircraft-img-1">
             </div>
             <div id="back" class="card back flipped" data-side='2'>
                 <h1 id="aircraft-name"></h1>
@@ -66,8 +73,8 @@
         <div class="filter-box">
             <h2>Filter Flashcards:</h2>
             <form id="filter-form">
-                <div class="flex-wrapper">
-                    <div id="wake-categories" class="radio-container">
+                <div id="filters" class="flex-wrapper">
+                    <div id="wake-categories" class="radio-container filter">
                         <h3>Wake Category:</h3>
                         <div>
                             <label for="wake-light">Light</label>
@@ -107,7 +114,7 @@
                     </div>
                 </div>
                 <div class="flex-wrapper">
-                    <input id="filter-button" class="btn btn-primary" type="submit" value="Filter">
+                    <input id="filter-button" class="btn btn-orange" type="submit" value="Filter">
                     <p id="filter-error" class="error-message">No matches!</p>
                 </div>
             </form>
