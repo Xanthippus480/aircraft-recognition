@@ -209,6 +209,15 @@ h6 {
     font-weight: bold;
 }
 
+@media screen and (max-width: 767px){
+    .specs-table span{
+        font-size: 0.66rem;
+    }
+    .specs-table p{
+       font-size: 1rem;
+    }
+}
+
 @keyframes flip-out {
     from {
         transform: rotateY(0deg);
