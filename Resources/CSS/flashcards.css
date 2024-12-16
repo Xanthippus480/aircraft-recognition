@@ -186,11 +186,6 @@ h6 {
     border-collapse: collapse;
 }
 
-@media screen and (max-width: 767px){
-    .specs-table{
-        width: 85%;
-}
-
 .specs-table td {
     width: 50%;
     padding: 1.5rem 0.5rem 0.5rem;
@@ -216,10 +211,13 @@ h6 {
 }
 
 @media screen and (max-width: 767px){
-    .specs-table span{
+    .specs-table {
+        width: 85%;
+    }
+    .specs-table span {
         font-size: 0.75rem;
     }
-    .specs-table p{
+    .specs-table p {
        font-size: 1.2rem;
     }
 }
