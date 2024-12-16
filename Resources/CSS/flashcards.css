@@ -89,12 +89,6 @@ h6 {
     flex-flow: row wrap;
 }
 
-@media screen and (max-width: 767px) {
-    .card-container {
-        width: 100%;
-    }
-}
-
 .cardholder {
     position: relative;
     margin-top: 4rem;
@@ -104,8 +98,11 @@ h6 {
 }
 
 @media screen and (max-width: 767px){
+    .card-container {
+        width: 100%;
+    }
  .cardholder{
-       height: 20rem:
+       height: 20rem;
     }
 }
 
