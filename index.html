@@ -12,6 +12,7 @@
     <script src="./Resources/JS/aircraftData.js" type="module" defer></script>
     <!--script src="./flipJQ.js" type="module" defer></script-->
     <script src="./Resources/JS/fCards.js" type="module" defer></script>
+    <script src="./Resources/JS/animation.js" type="text/javascript" defer></script>
 </head>
 
 <body>
@@ -27,41 +28,46 @@
                 <img class="" src="" id="aircraft-img-1">
             </div>
             <div id="back" class="card back flipped" data-side='2'>
-                <h1 id="aircraft-name"></h1>
-                <table class="specs-table">
-                    <tbody>
-                        <tr>
-                            <td>
-                                <span>ICAO Code:</span>
-                                <p id="icao code"></p>
-                            </td>
-                            <td>
-                                <span>Approach Category:</span>
-                                <p id="approach category"></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <span>Cruise Level (ft):</span>
-                                <p id="cruise level"></p>
-                            </td>
-                            <td>
-                                <span>Cruise Speed (kts/M'):</span>
-                                <p id="cruise speed"></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <span>Climb Rate (fpm):</span>
-                                <p id="climb rate"></p>
-                            </td>
-                            <td>
-                                <span>Descent Rate (fpm):</span>
-                                <p id="descent rate"></p>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="back-wrapper">
+                    <h1 id="aircraft-name"></h1>
+                    <button id="dropdown-button" class="btn btn-orange">View Specs</button>
+                    <div class="table-wrapper hidden">
+                        <table class="specs-table">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <span>ICAO Code:</span>
+                                        <p id="icao code"></p>
+                                    </td>
+                                    <td>
+                                        <span>Approach Category:</span>
+                                        <p id="approach category"></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span>Cruise Level (ft):</span>
+                                        <p id="cruise level"></p>
+                                    </td>
+                                    <td>
+                                        <span>Cruise Speed (kts/M'):</span>
+                                        <p id="cruise speed"></p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span>Climb Rate (fpm):</span>
+                                        <p id="climb rate"></p>
+                                    </td>
+                                    <td>
+                                        <span>Descent Rate (fpm):</span>
+                                        <p id="descent rate"></p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="button-bar">

@@ -21,11 +21,13 @@ window.onload = function () {
     nextButton.addEventListener('click', function () {
         ind++;
         getAircraft();
+        resetBack();
     });
 
     prevButton.addEventListener('click', function () {
         ind--;
         getAircraft();
+        resetBack();
     });
 
     filterButton.addEventListener('click', function (event) {
@@ -101,35 +103,14 @@ function setAircraft(aircraft, url) {
     $("#aircraft-name").text(aircraft["aircraft name"]);
     $('.specs-table td p').each(function () {
         const cellID = $(this).attr('id');
-        console.log(cellID);
+
         if (cellID === "cruise speed") {
             $(this).text(`${aircraft["cruise speed (kts)"]} / ${aircraft["cruise speed (mach)"]}`);
         } else {
             $(this).text(aircraft[cellID]);
         }
     });
-}
-
-$(".front").on("click", function () {
-    const cList = $(this).attr("class");
-    const regex = new RegExp("animate");
-    if (!regex.test(cList)) {
-        firstFlip();
-    } else {
-        normalFlip();
-    }
-});
-
-$(".back").on("click", normalFlip);
-
-function firstFlip() {
-    $(".front").toggleClass(["animate-out", "flipped"]);
-    $(".back").toggleClass(["animate-in", "flipped"]);
-}
-
-function normalFlip() {
-    $(".front").toggleClass(["animate-out", "animate-in", "flipped"]);
-    $(".back").toggleClass(["animate-out", "animate-in", "flipped"]);
+    setInitialDivPos();
 }
 
 function getFilters() {
@@ -152,7 +133,7 @@ function getFilters() {
 }
 
 function setBorder(cat) {
-    $(".back").removeClass(["light", "medium", "heavy", "super"])
+    $(".back").removeClass(["shadow-wake-light", "shadow-wake-medium", "shadow-wake-heavy", "shadow-wake-super"])
     switch (cat) {
         case "L": $(".back").addClass("shadow-wake-light");
             break;

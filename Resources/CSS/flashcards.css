@@ -97,12 +97,13 @@ h6 {
     text-align: center;
 }
 
-@media screen and (max-width: 767px){
+@media screen and (max-width: 767px) {
     .card-container {
         width: 100%;
     }
- .cardholder{
-       height: 20rem;
+
+    .cardholder {
+        height: 20rem;
     }
 }
 
@@ -162,10 +163,12 @@ h6 {
 
 .back {
     z-index: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-flow: column nowrap;
+}
+
+.back-wrapper {
+    position: relative;
+    width: 70%;
+    margin: auto;
 }
 
 .back h1 {
@@ -174,15 +177,30 @@ h6 {
     margin-bottom: 2rem;
 }
 
-@media screen and (max-width: 767px){
-    .back h1{
+.back .table-wrapper {
+    transition: all 0.4s ease-in;
+    overflow: hidden;
+    max-height: 250px;
+}
+
+.back .table-wrapper.hidden {
+    transition: all 0s ease-in;
+    max-height: 0px;
+}
+
+@media screen and (max-width: 767px) {
+    .back-wrapper {
+        width: 90%;
+    }
+
+    .back h1 {
         font-size: 2rem;
         margin-bottom: 1rem;
     }
 }
 
 .specs-table {
-    width: 70%;
+    width: 100%;
     text-align: left;
     border-collapse: collapse;
 }
@@ -211,16 +229,15 @@ h6 {
     font-weight: bold;
 }
 
-@media screen and (max-width: 767px){
-    .specs-table {
-        width: 85%;
-    }
+@media screen and (max-width: 767px) {
     .specs-table td {
         padding: 1.2rem 0.5rem 0.5rem;
     }
+
     .specs-table span {
         font-size: 0.75rem;
     }
+
     .specs-table p {
         font-size: 1.2rem;
         margin: 0.25rem 0 0.25rem 0.5rem;
@@ -279,19 +296,19 @@ h6 {
     box-shadow: var(--shadow-super);
 }
 
-@media screen and (max-width: 767px){
+@media screen and (max-width: 767px) {
     .shadow-wake-light {
         box-shadow: var(--shadow-light-thin);
     }
-    
+
     .shadow-wake-medium {
         box-shadow: var(--shadow-medium-thin);
     }
-    
+
     .shadow-wake-heavy {
         box-shadow: var(--shadow-heavy-thin);
     }
-    
+
     .shadow-wake-super {
         box-shadow: var(--shadow-super-thin);
     }
