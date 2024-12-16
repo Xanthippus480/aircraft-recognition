@@ -176,7 +176,8 @@ h6 {
 
 @media screen and (max-width: 767px){
     .back h1{
-       font-size: 2rem;
+        font-size: 2rem;
+        margin-bottom: 1rem;
     }
 }
 
@@ -214,11 +215,15 @@ h6 {
     .specs-table {
         width: 85%;
     }
+    .specs-table td {
+        padding: 1.2rem 0.5rem 0.5rem;
+    }
     .specs-table span {
         font-size: 0.75rem;
     }
     .specs-table p {
-       font-size: 1.2rem;
+        font-size: 1.2rem;
+        margin: 0.25rem 0 0.25rem 0.5rem;
     }
 }
 
