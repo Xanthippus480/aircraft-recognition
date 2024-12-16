@@ -42,6 +42,9 @@ window.onload = function () {
         shuffled = false;
         ind = 0;
         getAircraft(aircraftData);
+        if ($('#front.flipped')[0] !== undefined) {
+            normalFlip()
+        };
     });
 
     shuffleButton.addEventListener('click', function () {
