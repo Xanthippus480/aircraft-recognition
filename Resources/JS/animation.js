@@ -40,7 +40,11 @@ function setInitialDivPos() {
 function dropdownTrigger() {
     $('#dropdown-button').hide();
     $('.table-wrapper').removeClass('hidden');
-    $('.back-wrapper').animate({ top: '2.3rem' }, 400);
+    if ($(window).outerWidth() > 767) {
+        $('.back-wrapper').animate({ top: '5.5rem' }, 400);
+    } else {
+        $('.back-wrapper').animate({ top: '2.3rem' }, 400);
+    }
 }
 
 function resetBack() {
